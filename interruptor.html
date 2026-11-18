@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interruptor</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .tarjeta {
+            background-color: #1e1e1e;
+            padding: 35px;
+            border-radius: 16px;
+            border: 2px solid #333333;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
+            width: 320px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        h2 {
+            margin-top: 0;
+            font-size: 22px;
+            color: #e0e0e0;
+        }
+        #estado {
+            font-size: 18px;
+            font-weight: bold;
+            color: #ff5252;
+            background-color: rgba(255, 82, 82, 0.1);
+            padding: 12px;
+            border-radius: 8px;
+            margin: 25px 0;
+            transition: all 0.3s ease;
+        }
+        button {
+            width: 100%;
+            padding: 14px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            background-color: #2ecc71;
+            color: #121212;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        button:active {
+            transform: scale(0.97);
+        }
+    </style>
+</head>
+<body>
+<div id="panel" class="tarjeta">
+<h2>Control de luz</h2>
+<p id="estado">Estado: Apagado</p>
+<button id="boton-interruptor" type="button" onclick="alternarLuz()">Encender</button>
+</div>
+<script>
+    let encendido = false;
+    function alternarLuz() {
+        const panel = document.getElementById("panel");
+        const textoEstado = document.getElementById("estado");
+        const boton = document.getElementById("boton-interruptor");
+        if (encendido === false){
+            textoEstado.innerText = "Estado: Encendido";
+            textoEstado.style.color = "#2ecc71";
+            textoEstado.style.backgroundColor = "rgba(46, 204, 113, 0.15)";
+
+            boton.innerText = "Apagar";
+            boton.style.backgroundColor = "#ff5252";
+            boton.style.color = "#ffffff";
+
+            panel.style.borderColor = "#2ecc71";
+            panel.style.boxShadow = "0 0 30px rgba(46, 204, 113, 0.35)";
+
+            encendido = true;
+        } 
+        else {
+            textoEstado.innerText = "Estado: Apagado";
+            textoEstado.style.color = "#ff5252";
+            textoEstado.style.backgroundColor = "rgba(255, 82, 82, 0.15)";
+
+            boton.innerText = "Encender";
+            boton.style.backgroundColor = "#2ecc71";
+            boton.style.color = "#121212";
+
+            panel.style.borderColor = "#333333";
+            panel.style.boxShadow = "0 8px 25px rgba(0, 0, 0, 0.7)";
+
+            encendido = false;
+        }
+    }
+</script>
+</body>
+</html>
